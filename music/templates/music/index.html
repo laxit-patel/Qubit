@@ -1,0 +1,128 @@
+<!-- Load Static files -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="assets/img/Logo.png">
+    <link rel="icon" href="assets/img/Logo.png">
+    <title>
+       Music
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'music/assets/css/material-kit.css' %}?v=2.0.2">
+    <link rel="stylesheet" type="text/css" href="{% static 'music/main.css' %}" />
+    <!-- Documentation extras -->
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+
+    <link href="{% static 'music/assets/assets-for-demo/demo.css' %}" rel="stylesheet" />
+    <!-- iframe removal -->
+</head>
+
+<body class="index-page ">
+
+
+    <nav class="navbar  navbar-transparent  navbar-color-on-scroll  fixed-top  "  color-on-scroll="100" id="sectionsNav" >
+        <div class="container">
+		 <div class="logo-container">
+	                <div class="logo">
+                        <a href="index.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2CaPGC9z1u9ZfkADxeSDmPTa8aUgx5LZ0-lWja7DWv3DgLRm8" height="45" width="45" alt="Logo"  data-placement="bottom" data-html="true"></a>
+
+	                </div>
+             <div class="brand" style="color:black">Django Music</div>
+
+			</div>
+
+
+        </div>
+    </nav>
+
+    <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('{% static 'music/assets/img/website-background-image3-(free-from-pexel)_BRIGHTER.jpg'%}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="brand">
+                        <h1>Music</h1>
+                        <h3>Available Albums</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main main-raised">
+        <div class="section section-basic ">
+
+        <div class="title text-center">
+                    <h2>Albums</h2>
+                </div>
+
+        <div class="jumbotron vertical-center row text-center " style="background-color: transparent">
+                {% for album in all_albums %}
+
+                     <div class="card col-md-3 " >
+                      <img class="card-img-top" src="{{ album.album_logo }}" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title"><a href="{{ album.id }}">{{ album.album_title }}</a></h5>
+                        <p class="card-text">{{ album.artist }}</p>
+                      </div>
+                    </div>
+                {% endfor %}
+        </div>
+
+
+
+   </div>
+    </div>
+
+
+    <footer class="footer ">
+        <div class="container">
+            <nav class="pull-left">
+                <ul>
+
+
+
+
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+
+            </div>
+        </div>
+    </footer>
+    <!--   Core JS Files   -->
+
+    <script src="{% static 'music/assets/js/core/jquery.min.js' %}"></script>
+    <script src="{% static 'music/assets/js/core/popper.min.js' %}"></script>
+    <script src="{% static 'music/assets/js/bootstrap-material-design.min.js' %}"></script>
+    <!--  Plugin for Date Time Picker and Full Calendar Plugin  -->
+    <script src="{% static 'music/assets/js/plugins/moment.min.js' %}"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="{% static 'music/assets/js/plugins/bootstrap-datetimepicker.min.js' %}"></script>
+    <!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="{% static 'music/assets/js/plugins/nouislider.min.js' %}"></script>
+    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+    <script src="{% static 'music/assets/js/material-kit.js' %}?v=2.0.2"></script>
+    <!-- Fixed Sidebar Nav - js With initialisations For Demo Purpose, Don't Include it in your project -->
+    <script src="{% static 'music/assets/assets-for-demo/js/material-kit-demo.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+
+            //init DateTimePickers
+            materialKit.initFormExtendedDatetimepickers();
+
+            // Sliders Init
+            materialKit.initSliders();
+        });
+    </script>
+</body>
+
+</html>
